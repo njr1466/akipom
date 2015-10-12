@@ -1,0 +1,58 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 25, 2015, 7:02:05 PM
+    Author     : Vivian
+*/
+
+#geral{
+width:100%;
+height:200px;
+background-image:url("imagem/Header2.png");
+}
+
+#head h1 {
+float:left;
+position: absolute;
+top: 27px;
+left: 24px;
+}
+
+.btn-primary123 {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+.btn-custom {
+  background-color: hsl(0, 1%, 6%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#333232", endColorstr="#0f0f0f");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#333232), to(#0f0f0f));
+  background-image: -moz-linear-gradient(top, #333232, #0f0f0f);
+  background-image: -ms-linear-gradient(top, #333232, #0f0f0f);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333232), color-stop(100%, #0f0f0f));
+  background-image: -webkit-linear-gradient(top, #333232, #0f0f0f);
+  background-image: -o-linear-gradient(top, #333232, #0f0f0f);
+  background-image: linear-gradient(#333232, #0f0f0f);
+  border-color: #0f0f0f #0f0f0f hsl(0, 1%, 2.5%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.23);
+  -webkit-font-smoothing: antialiased;
+}
+.captionImagem{
+position: absolute;
+    padding: 11px 10px 11px 12px;
+    height: 47px;
+    background: #ff9016;
+    top: 0;
+    right: 0;
+    z-index: 12;
+    font-size: 1.125em;
+    color: #fff;
+    font-weight: 900;
+    
+}
