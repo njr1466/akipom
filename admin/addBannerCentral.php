@@ -3,14 +3,13 @@ include 'sessao.php';
 require_once 'conexao.php';
 $class = new Funcoes();
 ?>	
-
 <!DOCTYPE html>
 <html>
 
     <head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
 
-        <title>Área Administrativa AKIPOM</title>
+        <title>ï¿½rea Administrativa AKIPOM</title>
         <meta name="generator" content="Bootply">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -190,7 +189,7 @@ $class = new Funcoes();
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">ï¿½</button>
                         <h4 class="modal-title">Add Widget</h4>
                     </div>
                     <div class="modal-body">
