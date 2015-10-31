@@ -8,10 +8,10 @@ $class = new Funcoes();
 <!DOCTYPE html>
 <html>
 
-    <head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         
         
-        <title>Área Administrativa AKIPOM</title>
+        <title>Ãrea Administrativa AKIPOM</title>
         <meta name="generator" content="Bootply">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -148,12 +148,20 @@ $class = new Funcoes();
                                                         </div>     
 
                                                         <div class="form-group">
-                                                            <label class="col-md-4 control-label" for="promocao">Promoção</label>  
+                                                            <label class="col-md-4 control-label" for="promocao">PromoÃ§Ã£o Resumida</label>  
                                                             <div class="col-md-8">
-                                                                <input id="promocao" maxlength="50" name="promocao" type="text" placeholder="Digite o nome da promoção" class="form-control input-md" required="">
+                                                                <input id="promocao" maxlength="50" name="promocao" type="text" placeholder="Digite o nome da promoÃ§Ã£o" class="form-control input-md" required="">
 
                                                             </div>
                                                         </div>    
+                                                        
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label" for="promocaocompleta">PromoÃ§Ã£o Completa</label>  
+                                                            <div class="col-md-8">
+                                                                <input id="promocaocompleta"  name="promocaocompleta" type="text" placeholder="Digite o nome da promoÃ§Ã£o" class="form-control input-md" required="">
+
+                                                            </div>
+                                                        </div>   
 
                                                         <!-- Text input-->
                                                         <div class="form-group">
@@ -217,7 +225,7 @@ $class = new Funcoes();
 
 
                                                         <div class="form-group">
-                                                            <label class="col-md-4 control-label" for="txtEditor">Descrição</label>
+                                                            <label class="col-md-4 control-label" for="txtEditor">DescriÃ§Ã£o</label>
                                                             <div class="col-md-8">                     
                                                                 <textarea id="txtEditor" name="txtEditor"></textarea> 
                                                             </div>
@@ -250,7 +258,7 @@ $class = new Funcoes();
                                                                 <input id="imagem3" name="imagem3" class="input-file" type="file">
                                                             </div>
 
-                                                            <label class="col-md-8 control-label" for="mapa">Mapa de Localização</label>
+                                                            <label class="col-md-8 control-label" for="mapa">Mapa de LocalizaÃ§Ã£o</label>
                                                             <div class="col-md-8">
                                                                 <input id="mapa" name="mapa" class="input-file" type="file">
                                                             </div>
@@ -264,11 +272,27 @@ $class = new Funcoes();
                                                             <div class="checkbox">
                                                                 <label><input id="ativo" name="ativo" type="checkbox" value="1"></label>
                                                             </div>
+                                                            
+                                                            <label class="col-md-8 control-label" for="principalcategoria">Oferta Categoria</label>
+                                                            <div class="checkbox">
+                                                                <label><input id="principalcategoria" name="principalcategoria" type="checkbox" value="1"></label>
+                                                            </div>
+                                                            
+                                                                               
+                                                       
+                                                            <label class="col-md-4 control-label" for="observacao">ObservaÃ§Ã£o</label>  
+                                                            <div class="col-md-8">
+                                                                <input id="observacao" name="observacao" type="text" placeholder="Digite alguma observaÃ§Ã£o" class="form-control input-md" required="">
+
+                                                            </div>
+                                                        
                                                            
                                                             <label class="col-md-8 control-label" for="imagem3"></label>
                                                             <button type="submit" class="btn btn-success btn-sm" onclick="confirmacao();">
                                                                 <span class="glyphicon glyphicon-floppy-disk text-right" ></span>  Salvar  </button>
                                                         </div>
+                                                        
+                                    
 
                                                         <!-- File Button --> 
                                                         <div class="form-group">
@@ -304,7 +328,7 @@ $class = new Funcoes();
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                         <h4 class="modal-title">Add Widget</h4>
                     </div>
                     <div class="modal-body">

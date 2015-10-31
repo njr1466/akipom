@@ -3,7 +3,7 @@
  * Class that operate on table 'ofertas'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-10-12 17:25
+ * @date: 2015-10-31 12:42
  */
 class OfertasMySqlDAO implements OfertasDAO{
 
@@ -57,7 +57,7 @@ class OfertasMySqlDAO implements OfertasDAO{
  	 * @param OfertasMySql oferta
  	 */
 	public function insert($oferta){
-		$sql = 'INSERT INTO ofertas (id_cliente, id_categoria, promocao, promocaocompleta, valorantigo, valor, desconto, qtd, datainicial, datafinal, descricao, foto1, foto2, foto3, mapa, ativo, principal, principalcategoria, datacriacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO ofertas (id_cliente, id_categoria, promocao, promocaocompleta, valorantigo, valor, desconto, qtd, datainicial, datafinal, descricao, foto1, foto2, foto3, mapa, ativo, principal, principalcategoria, datacriacao, observacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($oferta->idCliente);
@@ -79,6 +79,7 @@ class OfertasMySqlDAO implements OfertasDAO{
 		$sqlQuery->setNumber($oferta->principal);
 		$sqlQuery->setNumber($oferta->principalcategoria);
 		$sqlQuery->set($oferta->datacriacao);
+		$sqlQuery->set($oferta->observacao);
 
 		$id = $this->executeInsert($sqlQuery);	
 		$oferta->id = $id;
@@ -91,7 +92,7 @@ class OfertasMySqlDAO implements OfertasDAO{
  	 * @param OfertasMySql oferta
  	 */
 	public function update($oferta){
-		$sql = 'UPDATE ofertas SET id_cliente = ?, id_categoria = ?, promocao = ?, promocaocompleta = ?, valorantigo = ?, valor = ?, desconto = ?, qtd = ?, datainicial = ?, datafinal = ?, descricao = ?, foto1 = ?, foto2 = ?, foto3 = ?, mapa = ?, ativo = ?, principal = ?, principalcategoria = ?, datacriacao = ? WHERE id = ?';
+		$sql = 'UPDATE ofertas SET id_cliente = ?, id_categoria = ?, promocao = ?, promocaocompleta = ?, valorantigo = ?, valor = ?, desconto = ?, qtd = ?, datainicial = ?, datafinal = ?, descricao = ?, foto1 = ?, foto2 = ?, foto3 = ?, mapa = ?, ativo = ?, principal = ?, principalcategoria = ?, datacriacao = ?, observacao = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($oferta->idCliente);
@@ -113,6 +114,7 @@ class OfertasMySqlDAO implements OfertasDAO{
 		$sqlQuery->setNumber($oferta->principal);
 		$sqlQuery->setNumber($oferta->principalcategoria);
 		$sqlQuery->set($oferta->datacriacao);
+		$sqlQuery->set($oferta->observacao);
 
 		$sqlQuery->setNumber($oferta->id);
 		return $this->executeUpdate($sqlQuery);
@@ -260,6 +262,13 @@ class OfertasMySqlDAO implements OfertasDAO{
 		return $this->getList($sqlQuery);
 	}
 
+	public function queryByObservacao($value){
+		$sql = 'SELECT * FROM ofertas WHERE observacao = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
 
 	public function deleteByIdCliente($value){
 		$sql = 'DELETE FROM ofertas WHERE id_cliente = ?';
@@ -394,6 +403,13 @@ class OfertasMySqlDAO implements OfertasDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function deleteByObservacao($value){
+		$sql = 'DELETE FROM ofertas WHERE observacao = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
 
 	
 	/**
@@ -424,6 +440,7 @@ class OfertasMySqlDAO implements OfertasDAO{
 		$oferta->principal = $row['principal'];
 		$oferta->principalcategoria = $row['principalcategoria'];
 		$oferta->datacriacao = $row['datacriacao'];
+		$oferta->observacao = $row['observacao'];
 
 		return $oferta;
 	}

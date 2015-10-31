@@ -1,5 +1,8 @@
 <?php
 session_start();
+include 'admin/conexao.php';
+$class = new Funcoes();
+$classCidade = new Funcoes();
 include './generated/include_dao.php';
 
 function UrlAtual() {
@@ -53,14 +56,7 @@ try {
         <!-- Custom CSS -->
         <link href="css/full-width-pics.css" rel="stylesheet">
         <script src="http://www.shiguenori.com/jquery/jquery-1.3.1.js"></script>
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media
-        queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file://
-        -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+
         <script language="javascript">
             $(document).ready(function () {
                 var y_fixo = $("#menu").offset().top;
@@ -175,12 +171,12 @@ try {
                                     <div class="section">
                                         <div class="container">
                                             <div class="row" style=" width: 1070px;">
-                                                  <table style=" width: 1070px;">
-                                                <tr>
-                                                    <td class="text-center" > <p style="font-size: 18px;"><strong><?php echo utf8_decode("Parabéns! seu Cupom foi Gerado com Sucesso! APROVEITE!"); ?> </strong></p></td>
-                                                </tr>
-                                            </table>
-                            
+                                                <table style=" width: 1070px;">
+                                                    <tr>
+                                                        <td class="text-center" > <p style="font-size: 18px;"><strong><?php echo utf8_decode("Parabéns! seu Cupom foi Gerado com Sucesso! APROVEITE!"); ?> </strong></p></td>
+                                                    </tr>
+                                                </table>
+
                                             </div>
                                         </div>
                                     </div>
@@ -200,7 +196,7 @@ try {
                                     <br><br>
                                     <div class="section">
                                         <div class="container">
-                                   <div class="row" style=" width: 800px;margin-left: 200px;padding-left: 0px;">
+                                            <div class="row" style=" width: 800px;margin-left: 200px;padding-left: 0px;">
 
 
                                                 <table>
@@ -238,18 +234,18 @@ try {
                                         </div>
                                     </div>
                                     <br><br>
-                                    
+
                                     <div class="section">
                                         <div class="container">
                                             <table style=" width: 600px;margin-left: 200px;font-size: 18px;">
                                                 <tr>
                                                     <td>
-                                                     <?php echo $oferta->descricao; ?>     
+                                                        <?php echo $oferta->descricao; ?>     
                                                     </td>
                                                 </tr>
-                                                
+
                                             </table>
-                                           
+
                                         </div>
                                     </div>
 
@@ -260,15 +256,15 @@ try {
                     </div>           
                 </div>
             </div>
-
-            <br>
-
-
+        </div>
+        <br>
 
 
 
-            <?php include 'footer.php'; ?>
 
-            </body>
 
-            </html>
+        <?php include 'footer.php'; ?>
+
+    </body>
+
+</html>

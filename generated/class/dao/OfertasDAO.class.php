@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2015-10-12 17:26
+ * @date: 2015-10-31 12:43
  */
 interface OfertasDAO{
 
@@ -89,6 +89,8 @@ interface OfertasDAO{
 
 	public function queryByDatacriacao($value);
 
+	public function queryByObservacao($value);
+
 
 	public function deleteByIdCliente($value);
 
@@ -127,6 +129,8 @@ interface OfertasDAO{
 	public function deleteByPrincipalcategoria($value);
 
 	public function deleteByDatacriacao($value);
+
+	public function deleteByObservacao($value);
 
 
 }

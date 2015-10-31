@@ -24,7 +24,7 @@ if (isset($_SESSION['logado'])) {
 
                 </ul>
             </li>
-            <li ><img style="width: 40px;height: 40px;padding-top: 10px;padding-right: 10px;" src="https://graph.facebook.com/<?php echo $_SESSION['UID']; ?>/picture"></li>
+            <li ><img style="width: 40px;height: 40px;padding-top: 10px;padding-right: 10px;" class="img-responsive" src="https://graph.facebook.com/<?php echo $_SESSION['UID']; ?>/picture"></li>
         </ul>
 
     </div>

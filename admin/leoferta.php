@@ -12,6 +12,7 @@ if (isset($_GET['acao'])) {
 }
 $categoria = $_POST['selectcategoria']; 
 $promocao = $_POST['promocao'];
+$promocaocompleta = $_POST['promocaocompleta'];
 $id_cliente = $_POST['selectbasic'];
 $valorantigo = (float) $_POST['valorantigo'];
 $valor = (float) $_POST['valor'];
@@ -30,8 +31,12 @@ $ativo = $_POST['ativo'];
 if(trim($ativo)==""){
 $ativo = 0;
 }
+$principalcategoria = $_POST['principalcategoria'];
+if(trim($principalcategoria)==""){
+$principalcategoria = 0;
+}
 $action = $_POST['action'];
-
+$observacao = $_POST['observacao'];
 
 
 $uploaddir = '../imagem/fotos/';
@@ -88,6 +93,9 @@ $Oferta->datainicial = $datainicial;
 $Oferta->datafinal = $datafinal;
 $Oferta->principal = $principal;
 $Oferta->ativo = $ativo;
+$Oferta->promocaocompleta = $promocaocompleta;
+$Oferta->observacao = $observacao;
+$Oferta->principalcategoria = $principalcategoria;
 
 if(trim($foto1)==""){
 $Oferta->foto1 = $_POST['foto1only'];    

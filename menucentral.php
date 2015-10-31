@@ -39,7 +39,7 @@
                         <?php }; ?>
                     </ul>
                 </li>
-               
+                <div id="bairro">
                 <li class="dropdown dropdown-large">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="imagem/Icon - Bairro.png" style="width: 17px; height: 17px">   Bairro<b class="caret"></b></a>
 
@@ -106,6 +106,7 @@
                     </ul>
 
                 </li>
+                </div>
                  <li class="dropdown dropdown-large">
                     <form class="navbar-form navbar-right text-left" role="search">
                         <div class="input-group stylish-input-group " style="left: 45px;">

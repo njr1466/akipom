@@ -3,7 +3,7 @@
  * Class that operate on table 'cupons'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-10-12 17:25
+ * @date: 2015-10-31 12:42
  */
 class CuponsMySqlDAO implements CuponsDAO{
 

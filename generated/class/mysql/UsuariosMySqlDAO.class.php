@@ -3,7 +3,7 @@
  * Class that operate on table 'usuarios'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-10-12 17:25
+ * @date: 2015-10-31 12:42
  */
 class UsuariosMySqlDAO implements UsuariosDAO{
 
