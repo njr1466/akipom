@@ -1,8 +1,8 @@
 <?php
 include 'admin/conexao.php';
 $class = new Funcoes();
+include './generated/include_dao.php';
 $classCidade = new Funcoes();
-
 ?>
 
 
@@ -34,9 +34,9 @@ $classCidade = new Funcoes();
             $(document).ready(function () {
                 var y_fixo = $("#menu").offset().top;
                 $(window).scroll(function () {
-                    if ($(document).scrollTop() > 600 && $(document).scrollTop() < ($('#footer').position().top - 500)) {
-                       
-            $("#menu").animate({
+                    if ($(document).scrollTop() > 600 && $(document).scrollTop() < ($('#footer').position().top - 700)) {
+
+                        $("#menu").animate({
                             top: ($(document).scrollTop() - 600) + "px"
                         }, {duration: 500, queue: false}
                         );
@@ -57,7 +57,7 @@ $classCidade = new Funcoes();
 
     <body style="margin-top: 0px;">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <?php //include 'conexaoFacebook.php'; ?>
+        <?php //include 'conexaoFacebook.php';  ?>
         <?php include 'topo.php'; ?>
         <div style="background-image: url(imagem/Header2.png); height: 220px; width: 100%"
              class="hidden-sm hidden-xs">
@@ -119,13 +119,58 @@ $classCidade = new Funcoes();
             <?php include 'menu.php'; ?>
             <div class="col-md-9" >
                 <div class="row">
+                    
+                        <?php include 'promocaoprincipalcategoria.php'; ?>
+
+                        <?php
+                        $array = DAOFactory::getBannercentralDAO()->queryAll();
+                        $count = count($array);
+                        $numerorandomico = mt_rand(0, $count - 1);
+                        ?>
+                        <div> <a href="<?php echo $array[$numerorandomico]->link; ?>">
+                                <img class="hidden-sm hidden-xs" src="imagem/bannercentral/<?php echo $array[$numerorandomico]->imagem; ?>" style="width: 98%;border: thin solid;border-color:white" class="img-responsive hidden-md img-responsive">
+                            </a>
+                        </div>
+                        <br>
+                        <div id="comum" >
+                           <?php include 'promocaocategoria.php'; ?> 
+                        </div>
+                        <button class="btn btn-block btn-default" onclick="javascript:carregarmais()" style="width: 98%;text-align: center;font-size: 13px;cursor:hand"><strong><?php echo utf8_decode("Carregar Mais Ofertas"); ?></strong></button>
+
+                        <br>
                    
-                     <?php include 'promocaocategoria.php';?> 
-                    
-                    
+
+                      
                 </div>
             </div>
         </div>
+        <div class="row" id="banner">
+                        <!--?php include 'menu.php'; ?-->
+                        <div class="row" style="
+                             margin-left: 0px;
+                             margin-right: 0px;
+                             ">
+
+                            <div class="row" style="
+                                 margin-left: 0px;
+                                 margin-right: 0px;
+                                 ">
+                                     <?php
+                                     $arrayinferior = DAOFactory::getBannerinferiorDAO()->queryAll();
+                                     $countinferior = count($arrayinferior);
+                                     $numerorandomico2 = mt_rand(0, $countinferior - 1);
+                                     ?>
+                                <div>
+                                    <a href="<?php echo $arrayinferior[$numerorandomico2]->link; ?>">
+                                        <img class="hidden-sm hidden-xs" src="imagem/bannerinferior/<?php echo $arrayinferior[$numerorandomico2]->imagem; ?>" style="width: 1136px;height:100px ;padding-left: 0px;border: thin solid;border-color:white;margin-left: 16px;" class="img-responsive hidden-md img-responsive">
+                                    </a>
+                                </div>
+                                <br>
+                                <!--?php include 'promocaoprincipal.php';?-->
+                                <!--?php include 'promocaocomum.php';?-->
+                            </div>
+                        </div>
+                    </div>
     </div>
     <?php include 'footer.php'; ?>
 

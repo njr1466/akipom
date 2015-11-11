@@ -141,6 +141,9 @@ $Oferta->datainicial = $datainicial;
 $Oferta->datafinal = $datafinal;
 $Oferta->principal = $principal;
 $Oferta->ativo = $ativo;
+$Oferta->promocaocompleta = $promocaocompleta;
+$Oferta->observacao = $observacao;
+$Oferta->principalcategoria = $principalcategoria;
 
 if(trim($foto1)==""){
 $Oferta->foto1 = $_POST['foto1only'];    

@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+   if ($_SESSION['logado']!=1) {
+     echo "<meta http-equiv='refresh' content=1;url='login.php'>";  
+   }else{ 
+
 include 'admin/conexao.php';
 $class = new Funcoes();
 $classCidade = new Funcoes();
@@ -37,6 +42,8 @@ try {
 } catch (Exception $exc) {
     echo $exc->getTraceAsString();
 }
+
+   
 ?>
 
 
@@ -268,3 +275,5 @@ try {
     </body>
 
 </html>
+
+   <?php };?>

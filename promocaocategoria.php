@@ -24,8 +24,8 @@ while ($row = mysqli_fetch_assoc($resu)) {
     $imagem3 = $row['foto3'];
     $mapa = $row['mapa'];
     ?>
-    <div class="col-sm-4 col-lg-4 col-md-4" style="position: relative;  min-height: 1px;  padding-right: 0px; padding-left: 0px;">
-        <div class="thumbnail" style="height: 450px;width: ">
+    <div class="col-sm-4 col-lg-4 col-md-4" style="padding-left: 0px;">
+        <div class="thumbnail" >
             <a href="ofertaexibida.php?oferta=<?php echo $id; ?>" style="color: #333333"> 
                 <img src="<?php echo'imagem/fotos/' . $imagem1; ?>"  alt="" class="img-rounded"></a>
             <div class="caption">

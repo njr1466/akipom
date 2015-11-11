@@ -125,7 +125,7 @@ function processReqChange() {
                                                     ?>       
                                                     <tr>
                                                         <td><div class="checkbox">
-                                                                <label><input id="principal" name="principal" onclick="atualizarPrincipal(this)" type="checkbox" value="1" <?php if($principal==1){echo "checked='checked'";}?>></label>
+                                                                <label><input id="principal" name="principal" onclick="atualizarPrincipal(<?php echo $id;?>)" type="checkbox" value="1" <?php if($principal==1){echo "checked='checked'";}?>></label>
                                                             </div></td>
                                                             <td><img src="../imagem/fotos/<?php echo $imagem ?>" style="width: 100px;height: 60px"></td>
                                                         <td><?php echo $promocao; ?></td>

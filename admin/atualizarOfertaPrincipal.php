@@ -5,7 +5,11 @@ try {
     $transaction = new Transaction();
 
     $oferta = DAOFactory::getOfertasDAO()->load($_GET['codigo']);
-    $oferta->principal = $_GET['principal'];
+    if($oferta->principal == 1){
+       $oferta->principal = 0; 
+    }else{
+        $oferta->principal = 1;
+    }
     DAOFactory::getOfertasDAO()->update($oferta);
     $transaction->commit();
    

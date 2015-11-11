@@ -26,7 +26,7 @@ if (isset($_GET['codigo'])) {
     <head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
 
-        <title>Área Administrativa AKIPOM</title>
+        <title>Ãrea Administrativa AKIPOM</title>
         <meta name="generator" content="Bootply">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -166,12 +166,20 @@ if (isset($_GET['codigo'])) {
                                                         </div>     
 
                                                         <div class="form-group">
-                                                            <label class="col-md-4 control-label" for="promocao">Promoção</label>  
+                                                            <label class="col-md-4 control-label" for="promocao">PromoÃ§Ã£o Resumida</label>  
                                                             <div class="col-md-8">
-                                                                <input id="promocao" maxlength="50" name="promocao" type="text" placeholder="Digite o nome da promoção" class="form-control input-md" required="" value="<?php echo $resultado->promocao; ?>">
+                                                                <input id="promocao" maxlength="50" name="promocao" type="text" placeholder="Digite o nome da promoÃ§Ã£o" class="form-control input-md" required="" value="<?php echo $resultado->promocao; ?>">
 
                                                             </div>
-                                                        </div>    
+                                                        </div> 
+                                                        
+                                                           <div class="form-group">
+                                                            <label class="col-md-4 control-label" for="promocaocompleta">PromoÃ§Ã£o Completa</label>  
+                                                            <div class="col-md-8">
+                                                                <input id="promocaocompleta" name="promocaocompleta" type="text" placeholder="Digite o nome da promoÃ§Ã£oï¿½ï¿½o" class="form-control input-md" required="" value="<?php echo $resultado->promocaocompleta; ?>">
+
+                                                            </div>
+                                                        </div>  
 
                                                         <!-- Text input-->
                                                         <div class="form-group">
@@ -235,7 +243,7 @@ if (isset($_GET['codigo'])) {
 
 
                                                         <div class="form-group">
-                                                            <label class="col-md-4 control-label" for="txtEditor" >Descrição</label>
+                                                            <label class="col-md-4 control-label" for="txtEditor" >DescriÃ§Ã£o</label>
                                                             <div class="col-md-8">                     
                                                                 
 <div id="sample">
@@ -287,7 +295,7 @@ if (isset($_GET['codigo'])) {
                                                                 <input id="imagem3" name="imagem3" class="input-file" type="file">
                                                             </div>
 
-                                                            <label class="col-md-8 control-label" for="mapa">Mapa de Localização</label>
+                                                            <label class="col-md-8 control-label" for="mapa">Mapa de LocalizaÃ§Ã£o</label>
                                                             <div class="col-md-8">
                                                                 <img src="../imagem/fotos/<?php echo $resultado->mapa;?>" style="width:40%">
 <input name="mapaonly" type="text" readonly="readonly" value="<?= $resultado->mapa;?>">
@@ -303,9 +311,21 @@ if (isset($_GET['codigo'])) {
                                                             <div class="checkbox">
                                                                 <label><input id="ativo" name="ativo" type="checkbox" value="1" <?php if($resultado->ativo==1){echo "checked='checked'";}?>></label>
                                                             </div>
+                                                            
+                                                             <label class="col-md-8 control-label" for="principalcategoria">Oferta Categoria</label>
+                                                            <div class="checkbox">
+                                                                <label><input id="principalcategoria" name="principalcategoria" type="checkbox" value="1" <?php if($resultado->principalcategoria==1){echo "checked='checked'";}?>></label>
+                                                            </div>
                                                            
+                                                             
                                                             
                                                         </div>
+                                                        
+                                                        <label class="col-md-4 control-label" for="observacao">ObservaÃ§Ã£o</label>  
+                                                            <div class="col-md-8">
+                                                                <input id="observacao" name="observacao" type="text" placeholder="Digite a observaÃ§Ã£o" class="form-control input-md" required="" value="<?php echo $resultado->observacao; ?>">
+
+                                                            </div>
 
                                                         <!-- File Button --> 
                                                        
