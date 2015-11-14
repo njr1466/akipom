@@ -10,27 +10,24 @@ if (isset($_GET['oferta'])) {
 
     while ($row = mysqli_fetch_assoc($resultado)) {
         $id_cliente = $row['id_cliente'];
-                    $valorantigo = (float) $row['valorantigo'];
-                    $valor = (float) $row['valor'];
-                    $desconto = $row['desconto'];
-                    $qtd = $row['qtd'];
-                    $descricao = $row['descricao'];
-                    $promocao = $row['promocao'];
-                    $date = new DateTime($row['datainicial']);
-                    $datainicial = $date->format('d.m.Y');
-                    $date = new DateTime($row['datafinal']);
-                    $datafinal = $date->format('d.m.Y');
-                    $principal = $row['principal'];
-                    $ativo = $row['ativo'];
-                    $imagem1 = $row['foto1'];
-                    $imagem2 = $row['foto2'];
-                    $imagem3 = $row['foto3'];
-                    $mapa = $row['mapa'];
+        $valorantigo = (float) $row['valorantigo'];
+        $valor = (float) $row['valor'];
+        $desconto = $row['desconto'];
+        $qtd = $row['qtd'];
+        $descricao = $row['descricao'];
+        $promocao = $row['promocao'];
+        $date = new DateTime($row['datainicial']);
+        $datainicial = $date->format('d.m.Y');
+        $date = new DateTime($row['datafinal']);
+        $datafinal = $date->format('d.m.Y');
+        $principal = $row['principal'];
+        $ativo = $row['ativo'];
+        $imagem1 = $row['foto1'];
+        $imagem2 = $row['foto2'];
+        $imagem3 = $row['foto3'];
+        $mapa = $row['mapa'];
     }
 }
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,8 +79,8 @@ if (isset($_GET['oferta'])) {
     <body style="margin-top: 0px;background-color: #ffffff">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
               rel="stylesheet">
-              <?php include 'conexaoFacebook.php'; ?>
-              <?php include 'topo.php'; ?>
+<?php //include 'conexaoFacebook.php';  ?>
+<?php include 'topo.php'; ?>
         <div style="background-image: url(imagem/Header2.png); height: 220px; width: 100%"
              class="hidden-sm hidden-xs">
             <br>
@@ -95,14 +92,14 @@ if (isset($_GET['oferta'])) {
             <br>
         </div>
 
-        <?php include 'menucentral.php';?>
+<?php include 'menucentral.php'; ?>
         <!-- Page Content -->
         <div class="section" >
             <div class="container">
                 <div class="row">
                     <div class="col-md-7">
                         <div class="caption">
-                            <h2><?php echo $promocao;?></h2>
+                            <h2><?php echo $promocao; ?></h2>
                             <p></p>
                         </div>
                     </div>
@@ -117,36 +114,36 @@ if (isset($_GET['oferta'])) {
                         <div id="carousel-example" data-interval="false" class="carousel slide"
                              data-ride="carousel">
                             <div class="carousel-inner">
-                                <?php if(trim($imagem1) != ""){ ?>
-                                <div class="item active">
-                                    <img src="imagem/fotos/<?php echo $imagem1;?>"
-                                         style="width: 100%">
-                                    <div class="carousel-caption">
-                                        <h2>Title</h2>
-                                        <p>Description</p>
+<?php if (trim($imagem1) != "") { ?>
+                                    <div class="item active">
+                                        <img src="imagem/fotos/<?php echo $imagem1; ?>"
+                                             style="width: 100%">
+                                        <div class="carousel-caption">
+                                            <h2>Title</h2>
+                                            <p>Description</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <?php }; ?>
-                                <?php if(trim($imagem2) != ""){ ?>
-                                <div class="item">
-                                    <img src="imagem/fotos/<?php echo $imagem2;?>"
-                                         style="width: 100%">
-                                    <div class="carousel-caption">
-                                        <h2>Title</h2>
-                                        <p>Description</p>
+<?php }; ?>
+<?php if (trim($imagem2) != "") { ?>
+                                    <div class="item">
+                                        <img src="imagem/fotos/<?php echo $imagem2; ?>"
+                                             style="width: 100%">
+                                        <div class="carousel-caption">
+                                            <h2>Title</h2>
+                                            <p>Description</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <?php };?>
-                                <?php if(trim($imagem3) != ""){?>
-                                <div class="item">
-                                    <img src="imagem/fotos/<?php echo $imagem3;?>"
-                                         style="width: 100%">
-                                    <div class="carousel-caption">
-                                        <h2>Title</h2>
-                                        <p>Description</p>
+<?php }; ?>
+<?php if (trim($imagem3) != "") { ?>
+                                    <div class="item">
+                                        <img src="imagem/fotos/<?php echo $imagem3; ?>"
+                                             style="width: 100%">
+                                        <div class="carousel-caption">
+                                            <h2>Title</h2>
+                                            <p>Description</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <?php };?>
+<?php }; ?>
                             </div>
                             <a class="left carousel-control" href="#carousel-example" data-slide="prev"><i class="icon-prev  fa fa-angle-left"></i></a>
                             <a class="right carousel-control" href="#carousel-example" data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
@@ -156,8 +153,8 @@ if (isset($_GET['oferta'])) {
                         <p></p>
                         <div class="row" style="margin-left: 0px; margin-right: 0px">
                             <div class="col-xs-6" style="background-color: #E9E9E9">
-                                <p style="color: #787878;text-align:center;font-size: 13px;height:30px ;padding-top: 20px;">R$ <strike><?php echo number_format($valorantigo, 2, ',', '.');?></strike></p>
-                                <p style="color: #787878;text-align:center;font-size: 25px;font-weight: bold; ">R$ <?php echo number_format($valor, 2, ',', '.');?></p>
+                                <p style="color: #787878;text-align:center;font-size: 13px;height:30px ;padding-top: 20px;">R$ <strike><?php echo number_format($valorantigo, 2, ',', '.'); ?></strike></p>
+                                <p style="color: #787878;text-align:center;font-size: 25px;font-weight: bold; ">R$ <?php echo number_format($valor, 2, ',', '.'); ?></p>
                             </div>
                             <div class="col-xs-6" style="background-color: #E2E2E2">
                                 <p style="color: #787878;text-align:center;font-size: 13px;height: 30px ;padding-top: 20px;">Cupons restantes</p>
@@ -165,7 +162,7 @@ if (isset($_GET['oferta'])) {
                             </div>
                             <div class="col-xs-6" style="background-color: #E2E2E2;">
                                 <p style="color: #787878;text-align:center;font-size: 13px;height: 30px ;padding-top: 20px;">Desconto de</p>
-                                <p style="color: #787878; text-align: center; font-size: 25px; font-weight: bold;"><?php echo $desconto;?>%</p>
+                                <p style="color: #787878; text-align: center; font-size: 25px; font-weight: bold;"><?php echo $desconto; ?>%</p>
                             </div>
                             <div class="col-xs-6" style="background-color: #E9E9E9;">
                                 <p style="color: #787878;text-align:center;font-size: 13px;height: 30px ;padding-top: 20px;">Encerra-se em:</p>
@@ -175,12 +172,12 @@ if (isset($_GET['oferta'])) {
                         <p></p>
                         <div class="row" style="margin-left: 0px; margin-right: 0px;width: auto;">
                             <h4>
-                                <p style="text-align: center;font-size: 15px;">Validade até <?php echo $datafinal?></p>
+                                <p style="text-align: center;font-size: 15px;">Validade até <?php echo $datafinal ?></p>
                             </h4>
                         </div>
                         <div class="row" style="margin-left: 0px; margin-right: 0px;width: auto;">
                             <div class="ratings col-xs-6" style="text-align: center">
-                               <a href="inserirCupom.php?oferta=<?php echo $_GET['oferta'];?>"><button type="button" class="btn btn-primary" style="width:100%">GERAR CUPOM</button></a>
+                                <a href="inserirCupom.php?oferta=<?php echo $_GET['oferta']; ?>"><button type="button" class="btn btn-primary" style="width:100%">GERAR CUPOM</button></a>
                             </div>
                             <div class="ratings col-xs-6" style="text-align: center">
                                 <button type="button" class="btn btn-primary" style="width:100%">ENVIAR POR EMAIL</button>
@@ -207,13 +204,14 @@ if (isset($_GET['oferta'])) {
             <div class="container">
                 <hr>
                 <div class="col-md-7">
-                    
-                  <?php echo $descricao;?>  
+
+<?php echo $descricao; ?>  
 
 
                 </div>
                 <h4>USE SEU CUPOM DIRETO DO SMARTPHONE</h4>
-
+                <h4>REGULAMENTO</h4>
+ 
                 <br>
                 <h4>MAPA</h4>
                 <hr>
@@ -232,7 +230,7 @@ if (isset($_GET['oferta'])) {
                 </div>
             </div>
         </div>
-        <?php include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
     </body>
 
 </html>

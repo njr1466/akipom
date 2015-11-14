@@ -1,7 +1,11 @@
 <?php
 $classPromocao = new Funcoes();
 $resu = DAOFactory::getOfertasDAO()->queryByIdCategoria($_GET['categoria']);
+$categoria = DAOFactory::getCategoriasDAO()->load($_GET['categoria']);
+?>
 
+<h5> Recife > <?php echo $categoria->nome;?></h5>
+<?php
 
 for ($i = 0; $i < count($resu); $i++) {
 

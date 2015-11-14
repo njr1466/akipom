@@ -3,10 +3,10 @@
 class Funcoes {
 
     protected $mysqli;
-    private $db_host = "127.0.0.1";
-    private $db_name = "akipom";
-    private $db_username = "root";
-    private $db_password = "";
+    private $db_host = "localhost";
+    private $db_name = "gerens_akipom";
+    private $db_username = "gerens_akipom";
+    private $db_password = "bill1466";
 
     public function __construct() {
         $this->mysqli = new mysqli($this->db_host, $this->db_username, $this->db_password, $this->db_name)
@@ -69,7 +69,7 @@ class Funcoes {
 
     function consultarCategoria($codigo) {
 
-        $query = "select *.categoria,count(*) from categorias where id=$codigo";
+        $query = "select * from categorias where id=$codigo";
         $result = mysqli_query($this->mysqli, $query);
         mysqli_close($this->mysqli);
         return $result;
@@ -84,7 +84,7 @@ class Funcoes {
 
     function efetuarLogin($login, $senha) {
 
-        $query = "select * from usuario where usuario='" . $login . "' and senha='" . md5($senha) . "'";
+        $query = "select * from admin where usuario='" . $login . "' and senha='" . md5($senha) . "'";
         $result = mysqli_query($this->mysqli, $query);
         $num = mysqli_num_rows($result);
 
@@ -160,9 +160,9 @@ class Funcoes {
     //*************************************************************
     function inserirClientes($nome, $sobrenome, $email, $senha) {
 
-        $query = "INSERT INTO clientes (nome, sobrenome,email,senha,id_facebook) VALUES (?,?,?,?,?)";
+        $query = "INSERT INTO usuario (nome, sobrenome,email,senha,id_facebook) VALUES (?,?,?,?,?)";
         $stmt = $this->mysqli->prepare($query);
-        $stmt->bind_param("ssss", $val1, $val2, $val3, $val4,$val5);
+        $stmt->bind_param("sssss", $val1, $val2, $val3, $val4, $val5);
         $val1 = $nome;
         $val2 = $sobrenome;
         $val3 = $email;
@@ -278,34 +278,27 @@ class Funcoes {
     // INICIO OFERTAS
     //*************************************************************
     function inserirOfertas($id_cliente, $promocao, $valorantigo, $valor, $desconto, $qtd, $descricao, $foto1, $foto2, $foto3, $mapa, $datainicial, $datafinal, $principal, $ativo, $categoria) {
-
-        try {
-            $query = "INSERT INTO ofertas(id_cliente,valorantigo,valor,desconto,qtd,descricao,foto1,foto2,foto3,mapa,datainicial,datafinal,principal,ativo,promocao,id_categoria)" . "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            $stmt = $this->mysqli->prepare($query);
-            $stmt->bind_param("iiiiisssssssiisi", $val1, $val14, $val2, $val3, $val4, $val5, $val6, $val7, $val8, $val9, $val10, $val11, $val12, $val13, $val15, $val16);
-            $val1 = $id_cliente;
-            $val2 = $valor;
-            $val3 = $desconto;
-            $val4 = $qtd;
-            $val5 = $descricao;
-            $val6 = $foto1;
-            $val7 = $foto2;
-            $val8 = $foto3;
-            $val9 = $mapa;
-            $val10 = $datainicial;
-            $val11 = $datafinal;
-            $val12 = $principal;
-            $val13 = $ativo;
-            $val14 = $valorantigo;
-            $val15 = $promocao;
-            $val16 = $categoria;
-            $stmt->execute();
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-
-
-       mysqli_close($this->mysqli);
+        $query = "INSERT INTO ofertas(id_cliente,valorantigo,valor,desconto,qtd,descricao,foto1,foto2,foto3,mapa,datainicial,datafinal,principal,ativo,promocao,id_categoria)" . "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $stmt = $this->mysqli->prepare($query);
+        $stmt->bind_param("iiiiisssssssiisi", $val1, $val14, $val2, $val3, $val4, $val5, $val6, $val7, $val8, $val9, $val10, $val11, $val12, $val13, $val15, $val16);
+        $val1 = $id_cliente;
+        $val2 = $valor;
+        $val3 = $desconto;
+        $val4 = $qtd;
+        $val5 = $descricao;
+        $val6 = $foto1;
+        $val7 = $foto2;
+        $val8 = $foto3;
+        $val9 = $mapa;
+        $val10 = $datainicial;
+        $val11 = $datafinal;
+        $val12 = $principal;
+        $val13 = $ativo;
+        $val14 = $valorantigo;
+        $val15 = $promocao;
+        $val16 = $categoria;
+        $stmt->execute();
+        mysqli_close($this->mysqli);
     }
 
     function alterarOferta($id, $nome, $sobrenome, $email, $senha) {
@@ -342,7 +335,15 @@ class Funcoes {
 
     function listarOfertaComum($limit) {
 
-        $query = "select * from ofertas where principal=0 and ativo=1 limit ".$limit."";
+        $query = "select * from ofertas where principal=0 and ativo=1 limit $limit";
+        $result = mysqli_query($this->mysqli, $query);
+        mysqli_close($this->mysqli);
+        return $result;
+    }
+
+    function listarOfertaporCategoria($id) {
+
+        $query = "select * from ofertas where id_categoria=" . $id . " and ativo=1";
         $result = mysqli_query($this->mysqli, $query);
         mysqli_close($this->mysqli);
         return $result;
@@ -350,7 +351,44 @@ class Funcoes {
 
     function listarOfertaEmpresa() {
 
-        $query = "select ofertas.*,empresas.empresa from ofertas,empresas where ofertas.id_cliente=empresas.id";
+        $query = "select ofertas.*,empresas.empresa from ofertas,empresas where ofertas.id_cliente=empresas.id order by ofertas.principal desc ,ofertas.promocao ";
+        $result = mysqli_query($this->mysqli, $query);
+        mysqli_close($this->mysqli);
+        return $result;
+    }
+
+    function listarOfertaEmpresaFiltro($ativo = null,$expirada=null,$inicial=null,$datafinal=null,$descricao=null) {
+        $filtro = "";
+        if ($ativo == 2) {
+            $filtro.= " and ofertas.ativo=1 ";
+        }
+        if ($ativo == 3) {
+            $filtro.= " and ofertas.ativo=0 ";
+        }
+        
+        if ($expirada == 2) {
+            $filtro.= " and ofertas.datafinal >= NOW() ";
+        }
+        
+        if ($expirada == 3) {
+            $filtro.= " and ofertas.datafinal < NOW() ";
+        }
+        
+        if ($inicial != null) {
+            $datainicial = substr($inicial,6,4)."-".substr($inicial,3,2)."-".substr($inicial,0,2);
+            $filtro.= " and ofertas.datainicial>='".$datainicial."' ";
+        }
+         if ($final != null) {
+            $datafinal = substr($final,6,4)."-".substr($final,3,2)."-".substr($final,0,2);
+            $filtro.= " and ofertas.datafinal='".$datafinal."' ";
+        }
+        
+         if ($descricao != null) {
+           
+            $filtro.= " and ofertas.promocaocompleta like%".$descricao."%' ";
+        }
+        
+        $query = "select ofertas.*,empresas.empresa from ofertas,empresas where ofertas.id_cliente=empresas.id $filtro order by ofertas.principal desc ,ofertas.promocao ";
         $result = mysqli_query($this->mysqli, $query);
         mysqli_close($this->mysqli);
         return $result;
@@ -363,22 +401,14 @@ class Funcoes {
         mysqli_close($this->mysqli);
         return $result;
     }
-    
-    function listarOfertaporCategoria($id) {
 
-        $query = "select * from ofertas where id_categoria=".$id." and ativo=1";
-        $result = mysqli_query($this->mysqli, $query);
-        mysqli_close($this->mysqli);
-        return $result;
-    }
-    
-     function gerarCupomdaOferta($id_oferta,$cupom,$id_usuario) {
+    function gerarCupomdaOferta($id_oferta, $cupom) {
 
         $query = "INSERT INTO cupons (id_oferta, id_cliente, data, numero) VALUES (?,?,NOW(),?)";
         $stmt = $this->mysqli->prepare($query);
-        $stmt->bind_param("iisi", $val1, $val2, $val3, $val4);
+        $stmt->bind_param("iii", $val1, $val2, $val3);
         $val1 = $id_oferta;
-        $val2 = $id_usuario;
+        $val2 = 2;
         $val3 = $cupom;
         $stmt->execute();
         mysqli_close($this->mysqli);

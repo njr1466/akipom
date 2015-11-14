@@ -2,7 +2,11 @@
 $codigocategoria = $_GET['categoria'];
 $classPromocao = new Funcoes();
 $resu = $classPromocao->listarOfertaporCategoria($codigocategoria);
+?>
 
+
+
+<?php
 
 while ($row = mysqli_fetch_assoc($resu)) {
     $id = $row['id'];

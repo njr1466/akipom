@@ -66,7 +66,7 @@ if (trim($_SESSION['url']) == "") {
 }
 
 if (isset($_SESSION['logado'])) {
-    //$class->inserirClientes($_SESSION['NAME'], $_SESSION['FIRSTNAME'], $_SESSION['EMAIL'], "");
+    $class->inserirClientes($_SESSION['NAME'], $_SESSION['FIRSTNAME'], $_SESSION['EMAIL'], "");
     echo "<meta http-equiv='refresh' content=1;url='$url'>";
 //echo $_SESSION['url'];
 }
@@ -74,7 +74,7 @@ if (isset($_SESSION['logado'])) {
 <!DOCTYPE html>
 <html>
 
-    <head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <head><meta http-equiv="Content-Type" content="text/html;" charset=iso-8859-1">
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,49 +88,24 @@ if (isset($_SESSION['logado'])) {
         <link href="css/full-width-pics.css" rel="stylesheet">
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
         <script src="http://www.shiguenori.com/jquery/jquery-1.3.1.js"></script>
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media
-        queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file://
-        -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <?php
-        if (isset($_GET['msg'])) {
-            ?>
-            <script language="javascript">
-                $(document).ready(function () {
-                    $('#loginbox').hide();
-                    $('#signupbox').show();
-                });
-            </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+       
+        <script>
 
-            <?php
-        }
-        ?>
-        <script language="javascript">
+            
             $(document).ready(function () {
-                var y_fixo = $("#menu").offset().top;
-                $(window).scroll(function () {
-                    if ($(document).scrollTop() > 600 && $(document).scrollTop() < 1670) {
-                        $("#menu").animate({
-                            top: ($(document).scrollTop() - 600) + "px"
-                        }, {duration: 500, queue: false}
-                        );
-                    }
-
-                    if ($(document).scrollTop() < 600) {
-                        $("#menu").animate({
-                            top: (0) + "px"
-                        }, {duration: 500, queue: false}
-                        );
-                    }
-
+                $('#enviar').click()(function () {
+                    alert("ok");
+                    $.ajax({
+                        url: 'verificaEmail.php',
+                        type: 'POST',
+                        data: 'email=' + $('#email').val(),
+                        success: function (data) {
+                            $('#resposta').html(data);
+                        }
+                    });
                 });
-            });
-
-      
+            })
         </script>
 
 
@@ -244,7 +219,7 @@ if (isset($_SESSION['logado'])) {
                                             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
                                                 Ainda não é cadastrado! 
                                                 <a href="#" onClick="$('#loginbox').hide();
-                                                        $('#signupbox').show()">
+                                                                $('#signupbox').show()">
                                                     Clique Aqui
                                                 </a>
                                             </div>
@@ -261,11 +236,11 @@ if (isset($_SESSION['logado'])) {
                         </div>  
                     </div>
                 <?php } else { ?>
-                <br>
+                    <br>
                     <div class="container">
                         <div class="panel panel-info" style="100%;text-align: center">
-                        <h3><?php echo utf8_decode('Aguarde, Você será redirecionado.')?></h3>
-                         </div>
+                            <h3><?php echo utf8_decode('Aguarde, Você será redirecionado.') ?></h3>
+                        </div>
                     </div>
 
                 <?php } ?>
@@ -277,7 +252,7 @@ if (isset($_SESSION['logado'])) {
                                     $('#loginbox').show()">Login</a></div>
                         </div>  
                         <div class="panel-body" >
-                            <form id="signupform" name="signupform" class="form-horizontal" role="form" action="inserirUsuario.php" method="post">
+                            <form id="signupform" name="signupform" class="form-horizontal" role="form"  method="post">
 
                                 <div id="signupalert" style="display:none" class="alert alert-danger">
                                     <p>Error:</p>
@@ -289,8 +264,9 @@ if (isset($_SESSION['logado'])) {
                                 <div class="form-group">
                                     <label for="email" class="col-md-3 control-label">Email</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="email" placeholder="Email Address" required="true">
+                                        <input type="text" class="form-control" name="email" id="email" placeholder="Digite seu email" required="true">
                                     </div>
+                                    <div id='resposta'></div>
                                 </div>
 
                                 <div class="form-group">
@@ -306,7 +282,7 @@ if (isset($_SESSION['logado'])) {
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password" class="col-md-3 control-label">Password</label>
+                                    <label for="password" class="col-md-3 control-label">Senha</label>
                                     <div class="col-md-9">
                                         <input type="password" class="form-control" name="senha" placeholder="Digite sua senha" required="true">
                                     </div>
@@ -317,7 +293,7 @@ if (isset($_SESSION['logado'])) {
                                 <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> Cadastrar</button>
+                                        <button id="btn-signup" type="button" id="enviar" name="enviar" class="btn btn-info"><i class="icon-hand-right"></i> Cadastrar</button>
                                         <span style="margin-left:8px;">or</span>  
                                     </div>
                                 </div>

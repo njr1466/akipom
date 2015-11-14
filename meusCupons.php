@@ -339,6 +339,7 @@ session_start();
                                 $dia = $date->format('d');
                                 $mes = $date->format('m');
                                 $ano = $date->format('Y');
+                                
                                 $empresa = DAOFactory::getEmpresasDAO()->load($oferta->idCliente);
                                     ?>
                                     

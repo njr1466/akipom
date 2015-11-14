@@ -9,6 +9,12 @@ if (isset($_SESSION['logado'])) {
                 <a href="index.php" class="dropdown-toggle"  style="color: #ffffff;padding-bottom: 8px;">Home</a>
 
             </li> 
+            	<li>
+					<a href="#">
+						<span class="menu-icon fa fa-picture-o"></span>
+						Photos
+					</a>
+				</li>
 
             <li class="dropdown thumb-dropdown" style="height: 43px;">
                  <a href="index.php" class="dropdown-toggle"  style="color: #ffffff;padding-bottom: 8px;">Anuncie</a>
@@ -19,7 +25,7 @@ if (isset($_SESSION['logado'])) {
                 <ul class="dropdown-menu" role="menu">
 
                     <li><a href="meusCupons.php">  Meus Cupons </a></li>       
-                    <li>  Editar Dados </li>    
+                    <li> <a href="#"> Editar Dados </li>    
                     <li><a href="logout.php">  Logout </a></li> 
 
                 </ul>

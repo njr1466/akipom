@@ -38,7 +38,7 @@ for ($i = 0; $i < count($array); $i++) {
             <table cellspacing="10">
 
                 <tr>
-                    <td style="width: 180px;"><img class="img-responsive" style="height: 200px;width:300px" src="<?php echo'imagem/' . $imagem; ?>">  </td>                
+                    <td style="width: 180px;"><img class="img-responsive" style="height: 200px;width:180px" src="<?php echo'imagem/' . $imagem; ?>">  </td>                
                     <td style="color: #ffffff;padding-left: 5px;"><?php echo $texto; ?><br><br>
                         <div class="ratings" style="text-align: center">
                             <a href="<?php echo $link; ?>"> <button type="button" class="btn btn-primary" style="width:80%"> <?php echo utf8_decode("CONFIRA"); ?></button> </a>
